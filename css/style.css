@@ -1,0 +1,348 @@
+/* =====================================================
+   THEME VARIABLES
+   ===================================================== */
+
+/* Light theme */
+:root {
+    --bg: linear-gradient(135deg, #74ebd5, #acb6e5);
+    --text: #0f172a;
+
+    --surface: rgba(255, 255, 255, 0.92);
+    --surface-solid: #ffffff;
+
+    --border: rgba(15, 23, 42, 0.12);
+    --shadow: rgba(0, 0, 0, 0.22);
+
+    --btn-bg: #333;
+    --btn-text: #ffffff;
+
+    --input-bg: #ffffff;
+    --input-text: #0f172a;
+
+    --hover: #eeeeee;
+}
+
+/* Dark theme */
+body.theme-dark {
+    --bg: radial-gradient(circle at 20% 10%, #243b55, #141e30);
+    --text: #e5e7eb;
+
+    --surface: rgba(17, 24, 39, 0.88);
+    --surface-solid: #111827;
+
+    --border: rgba(229, 231, 235, 0.12);
+    --shadow: rgba(0, 0, 0, 0.55);
+
+    --btn-bg: #e5e7eb;
+    --btn-text: #111827;
+
+    --input-bg: #0b1220;
+    --input-text: #e5e7eb;
+
+    --hover: rgba(229, 231, 235, 0.08);
+}
+
+/* =====================================================
+   BASE
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* =====================================================
+   HEADER / CONTROLS
+   ===================================================== */
+
+header {
+    padding: 0.8rem 1rem;
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* =====================================================
+   INPUTS & BUTTONS
+   ===================================================== */
+
+input,
+button {
+    padding: 0.55rem 0.75rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.95rem;
+}
+
+input {
+    background: var(--input-bg);
+    color: var(--input-text);
+    outline: 1px solid var(--border);
+}
+
+button {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+button:hover { opacity: 0.9; }
+button:active { transform: scale(0.97); }
+
+/* =====================================================
+   AUTOCOMPLETE
+   ===================================================== */
+
+.search-wrapper {
+    position: relative;
+}
+
+.autocomplete-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+
+    background: var(--surface-solid);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px var(--shadow);
+    overflow: hidden;
+}
+
+.autocomplete-item {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+}
+
+.autocomplete-item:hover {
+    background: var(--hover);
+}
+
+/* =====================================================
+   CURRENT WEATHER CARD
+   ===================================================== */
+
+.card {
+    width: 320px;
+    margin: 1rem auto;
+    padding: 1.1rem;
+
+    background: var(--surface-solid);
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 25px var(--shadow);
+}
+
+.card h2 {
+    margin: 0.4rem 0;
+}
+
+.current-icon {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.3rem 0;
+}
+
+.current-icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.current-temp {
+    font-size: 2.1rem;
+    font-weight: 700;
+    margin: 0.2rem 0;
+}
+
+.current-desc {
+    text-transform: capitalize;
+    opacity: 0.9;
+    margin-bottom: 0.25rem;
+}
+
+.current-extra {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+/* =====================================================
+   FORECAST GRID
+   ===================================================== */
+
+.forecast-grid {
+    display: grid;
+    gap: 16px;
+    padding: 0.8rem;
+    margin: 0 auto;
+    max-width: 1200px;
+
+    /* Desktop: auto-fit, wrap naturally */
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    justify-items: center;
+}
+
+.forecast-card {
+    width: 100%;
+    max-width: 200px;
+    aspect-ratio: 1 / 1;
+
+    background: var(--surface);
+    border-radius: 18px;
+    padding: 0.9rem;
+    box-shadow: 0 10px 25px var(--shadow);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    transition: transform 0.2s ease;
+}
+
+.forecast-card:hover {
+    transform: translateY(-3px);
+}
+
+.forecast-day {
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.forecast-icon {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px 0;
+}
+
+.forecast-icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.forecast-temp {
+    display: flex;
+    gap: 8px;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.forecast-temp .max { font-weight: 700; }
+.forecast-temp .min { opacity: 0.8; }
+
+.forecast-desc {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    text-transform: capitalize;
+}
+
+
+
+@media (max-width: 520px) {
+
+    .card {
+        width: min(320px, 92vw);
+    }
+
+    .forecast-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        padding: 0.6rem;
+    }
+
+    .forecast-card {
+        max-width: none;
+        width: min(320px, 92vw);
+        aspect-ratio: 1 / 1;
+    }
+}
+
+/* =====================================================
+   UTILITY
+   ===================================================== */
+
+.loading {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+.error {
+    text-align: center;
+    color: #dc2626;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+    text-align: center;
+    padding: 0.8rem;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+@media (min-width: 1024px) {
+
+  /* Reduce header + title spacing */
+  header { padding: 0.35rem 1rem !important; }
+  header h1 { margin: 0.15rem 0 0.45rem !important; }
+
+  /* Controls row closer to title */
+  .controls { gap: 0.45rem !important; margin: 0.2rem 0 0.4rem !important; }
+
+  /* Make current card shorter and closer to forecast */
+  .card {
+    margin: 0.55rem auto 0.45rem !important;   /* top, left/right, bottom */
+    padding: 0.9rem !important;
+    width: 320px; /* keep */
+  }
+
+  .current-icon { height: 52px !important; margin: 0.15rem 0 !important; }
+  .current-icon img { width: 46px !important; height: 46px !important; }
+
+  .current-temp { font-size: 2rem !important; margin: 0.1rem 0 !important; }
+  .current-desc { margin: 0.1rem 0 0.15rem !important; }
+  .current-extra { margin-top: 0.15rem !important; }
+
+  /* Forecast closer + tighter */
+  .forecast-grid {
+    padding: 0.35rem 1rem 0.6rem !important;
+    gap: 12px !important;
+    margin-top: 0 !important;
+  }
+
+  .forecast-card {
+    max-width: 180px !important;
+    padding: 0.75rem !important;
+  }
+
+  .forecast-icon { height: 48px !important; margin: 4px 0 !important; }
+  .forecast-icon img { width: 42px !important; height: 42px !important; }
+
+  footer { padding: 0.4rem 1rem !important; }
+}

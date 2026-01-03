@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/weather-icons.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>🌤️ Weather Dashboard</h1>
+
+    <div class="controls">
+        <div class="search-wrapper">
+            <input id="searchInput" type="text" placeholder="Search city..." autocomplete="off">
+            <div id="autocompleteList" class="autocomplete-list"></div>
+        </div>
+        <button id="searchBtn">🔍</button>
+        <button id="locationBtn">📍</button>
+        <button id="unitToggle">Switch to °F</button>
+     
+<button id="themeToggle" type="button" aria-label="Toggle theme">Dark mode</button>
+
+    </div>
+</header>
+
+<main>
+    <section id="currentWeather"></section>
+    <section id="forecast"></section>
+</main>
+
+<script type="module" src="js/app.js"></script>
+<script src="./js/env.example.js"></script>
+</body>
+</html>
