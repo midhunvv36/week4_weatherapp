@@ -1,10 +1,19 @@
 @media (max-width: 1100px) {
   .forecast-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
 @media (max-width: 800px) {
   .forecast-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ✅ Mobile: compact 2-column forecast (no huge squares) */
 @media (max-width: 520px) {
+  .forecast-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
+  .forecast-card { width: 100%; max-width: 180px; aspect-ratio: 4 / 5; height: auto; }
+}
+
+/* ✅ Very small phones: 1 column */
+@media (max-width: 360px) {
   .forecast-grid { grid-template-columns: 1fr; }
-  .forecast-card { width: 90vw; height: auto; aspect-ratio: 1 / 1; }
+  .forecast-card { max-width: 280px; aspect-ratio: auto; }
 }
